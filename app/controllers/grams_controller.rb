@@ -28,7 +28,8 @@ class GramsController < ApplicationController
 	end
 
 	def index
-  	end
+    @grams = Gram.all
+  end
 
   	def create
   		@gram = current_user.grams.create(gram_params)
@@ -55,7 +56,7 @@ class GramsController < ApplicationController
   	private
 
   	def gram_params
-  		params.require(:gram).permit(:message)
+  		params.require(:gram).permit(:message, :picture)
   	end
 
   	def render_not_found(status=:not_found)
